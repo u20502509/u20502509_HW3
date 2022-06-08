@@ -14,7 +14,7 @@ namespace u20502509_HW03.Controllers
         {
             //create a new list of documents using the file model and stores them. Loops through each file in the specified folder and then stores them in the list using a foreach.
             List<FileModel> FilesObj = new List<FileModel>();
-            foreach (string strfile in Directory.GetFiles(Server.MapPath("~/Media/Documents")))
+            foreach (string strfile in Directory.GetFiles(Server.MapPath("~/FileUploads/Documents")))
             {
                 FileInfo fileInfo = new FileInfo(strfile);
                 FileModel obj = new FileModel();
@@ -29,7 +29,7 @@ namespace u20502509_HW03.Controllers
         //uses path combine to get the file from the specified location and then creates a path to download the file from 
         public FileResult DownloadFile(string fileName)
         {
-            string fullPath = Path.Combine(Server.MapPath("~/Media/Document"), fileName);
+            string fullPath = Path.Combine(Server.MapPath("~/FileUploads/Documents"), fileName);
             byte[] fileBytes = System.IO.File.ReadAllBytes(fullPath);
             return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
 
@@ -38,7 +38,7 @@ namespace u20502509_HW03.Controllers
         //reads the selected files location and then removes the file from the specified folder
         public ActionResult DeleteFile(string fileName)
         {
-            string fullPath = Path.Combine(Server.MapPath("~/Media/Document"), fileName);
+            string fullPath = Path.Combine(Server.MapPath("~/FileUploads/Documents"), fileName);
             FileInfo file = new FileInfo(fullPath);
             System.IO.File.Delete(fileName);
             file.Delete();
