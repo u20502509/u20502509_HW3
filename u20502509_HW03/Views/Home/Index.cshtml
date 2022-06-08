@@ -2,30 +2,42 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <h3>An easy to use media uploader/downloader.</h3>
+            <p>
+                This application will enable you to choose a file type to upload
+                to the server. It will then store each file under a corresponding page and you will
+                be able to view the file, download or delete the file.
+            </p>
+            <br>
+            <h3>How it works: </h3>
+            <p>
+                On the right hand side you will see the options list of different
+                files you are able to upload. Once you make a selection the file explorer will
+                appear and you will choose the file to upload. Once you have selected the file, click the submit button.
+            </p>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Option Select</h2>
+
+            @using (Html.BeginForm("Upload", "Home", FormMethod.Post,
+                new { enctypye = "multipart/form-data" }))
+            {
+                <div>
+                    Document @Html.RadioButton("FileType", "Documents")<br />
+                    Images @Html.RadioButton("FileType", "Images")<br />
+                    Videos @Html.RadioButton("FileType", "Videos")<br />
+
+                </div>
+                @Html.TextBox("uploadFile", "", new { type = "file" });
+                <br />
+                <input type="submit" class="btn" name="submit" />
+            }
+        </div>
+
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+
 </div>
