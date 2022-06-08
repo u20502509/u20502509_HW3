@@ -34,7 +34,7 @@ namespace u20502509_HW03.Controllers
         {
             FileOption = frm["FileType"].ToString();
             string fileName = Path.GetFileName(uploadedFile.FileName);
-            string FilePath = Path.Combine(Server.MapPath("~/Media/" + FileOption), fileName);
+            string FilePath = Path.Combine(Server.MapPath("~/FileUploads/" + FileOption), fileName);
             uploadedFile.SaveAs(FilePath);
             return RedirectToAction("Index");
         }

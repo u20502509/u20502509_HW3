@@ -4,10 +4,11 @@ using System.Linq;
 using System.Web;
 using System.IO;
 using u20502509_HW03.Models;
+using System.Web.Mvc;
 
 namespace u20502509_HW03.Controllers
 {
-    public class ImagesController
+    public class ImagesController:Controller
     {
         // GET: Images
         public ActionResult Images()

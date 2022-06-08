@@ -2,42 +2,68 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="container">
-    <div class="row">
-        <div class="col-sm-8">
-            <h3>An easy to use media uploader/downloader.</h3>
-            <p>
-                This application will enable you to choose a file type to upload
-                to the server. It will then store each file under a corresponding page and you will
-                be able to view the file, download or delete the file.
-            </p>
-            <br>
-            <h3>How it works: </h3>
-            <p>
-                On the right hand side you will see the options list of different
-                files you are able to upload. Once you make a selection the file explorer will
-                appear and you will choose the file to upload. Once you have selected the file, click the submit button.
-            </p>
 
-        </div>
-        <div class="col-md-4">
-            <h2>Option Select</h2>
 
-            @using (Html.BeginForm("Upload", "Home", FormMethod.Post,
-                new { enctypye = "multipart/form-data" }))
-            {
-                <div>
-                    Document @Html.RadioButton("FileType", "Documents")<br />
-                    Images @Html.RadioButton("FileType", "Images")<br />
-                    Videos @Html.RadioButton("FileType", "Videos")<br />
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8" id="description1">
+                <h3>An easy to use media uploader/downloader.</h3>
+                <p>
+                    This application will enable you to choose a file type to upload
+                    to the server. It will then store each file under a corresponding page and you will
+                    be able to view the file, download or delete the file.
+                </p>
+                <br>
+                <h3>How it works: </h3>
+                <p>
+                    On the right hand side you will see the options list of different
+                    files you are able to upload. Once you make a selection the file explorer will
+                    appear and you will choose the file to upload. Once you have selected the file, click the submit button.
+                </p>
 
-                </div>
-                @Html.TextBox("uploadFile", "", new { type = "file" });
-                <br />
-                <input type="submit" class="btn" name="submit" />
-            }
+            </div>
+            <div class="col-md-4" id="form1">
+                <h2>Select a file to upload.</h2>
+
+                @using (Html.BeginForm("Upload", "Home", FormMethod.Post,
+                    new { enctypye = "multipart/form-data" }))
+                {
+                    <div>
+                        @Html.RadioButton("FileType", "Documents") Documents <br />
+                        @Html.RadioButton("FileType", "Images") Images<br />
+                        @Html.RadioButton("FileType", "Videos") Videos <br />
+
+                    </div>
+                    <br />
+                    @Html.TextBox("uploadedFile", "", new { type = "file" });
+                    <br />
+                    <button type="submit" class="btn btn-warning">Submit</button>
+
+                }
+            </div>
+
         </div>
 
     </div>
 
-</div>
+
+<style>
+    #description1{
+        margin-top: 50px;
+        background-color: #443f3f;
+        color: white;
+        padding: 14px;
+    }
+
+    #form1{
+        margin-top: 50px;
+        background-color: #908484;
+        padding-bottom: 36px;
+        color: white;
+    }
+
+ 
+
+    
+</style>
+

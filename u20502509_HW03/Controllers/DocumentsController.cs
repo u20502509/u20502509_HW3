@@ -4,10 +4,11 @@ using System.Linq;
 using System.Web;
 using System.IO;
 using u20502509_HW03.Models;
+using System.Web.Mvc;
 
 namespace u20502509_HW03.Controllers
 {
-    public class DocumentsController
+    public class DocumentsController:Controller
     {
         // GET: Document
         public ActionResult Document()
@@ -42,7 +43,7 @@ namespace u20502509_HW03.Controllers
             FileInfo file = new FileInfo(fullPath);
             System.IO.File.Delete(fileName);
             file.Delete();
-            return RedirectToAction("Document");
+            return RedirectToAction("Documents");
         }
     }
 }
